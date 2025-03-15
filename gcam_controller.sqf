@@ -45,9 +45,11 @@ while {_cameraAlive} do {
     // Read controller input for movement:
     private _playerInputX = inputAction "User10";   // Left stick vertical (forward/back)
     private _playerInputY = inputAction "User11";   // Left stick horizontal (left/right)
-
-    // Apply dead zone using if/then:
     private _xAxisMovement = 0;
+    private _yAxisMovement = 0;
+    
+    // Apply dead zone using if/then:
+
     if ((abs _playerInputX > .5 ) or (abs _playerInputX < .5)) then {
         _xAxisMovement = _playerInputX;
         diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
@@ -55,7 +57,7 @@ while {_cameraAlive} do {
         hintSilent "";
     };
 
-    private _yAxisMovement = 0;
+
     if ((abs _playerInputY > .5) or (abs _playerInputY < .5)) then {
         _yAxisMovement = _playerInputY;
         diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
