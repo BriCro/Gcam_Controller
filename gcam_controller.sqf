@@ -22,7 +22,7 @@ _quit = false;
 _waitTime = accTime / (diag_fps * 2);
 
 // Define dead zone and movement speed:
-private _deadZone = 0.3; // Adjust dead zone as needed
+//private _deadZone = 0.01; // Adjust dead zone as needed
 private _moveSpeed = 0.2 * CFMOVE; // Adjust multiplier if necessary
 
 // Create the camera starting at the player's position plus an upward offset:
@@ -43,24 +43,28 @@ showCinemaBorder false;
 while {_cameraAlive} do {
 
     // Read controller input for movement:
-    private _playerInputX    = inputAction "User10";   // Left stick vertical (forward/back)
+    private _playerInputX = inputAction "User10";   // Left stick vertical (forward/back)
     private _playerInputY = inputAction "User11";   // Left stick horizontal (left/right)
 
     // Apply dead zone using if/then:
     private _xAxisMovement = 0;
-    if (abs _playerInputX > _deadZone) then {
+    if (abs _playerInputX > .5 ) or (abs _playerInputX < .5) then {
         _xAxisMovement = _playerInputX;
+        diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
+        hint "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
     };
 
     private _yAxisMovement = 0;
-    if (abs _playerInputY > _deadZone) then {
+    if (abs _playerInputY > .5) or (abs _playerInputY < .5) then {
         _yAxisMovement = _playerInputY;
+        diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
+        hint "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
     };
 
     // Debug logging: Print input values (only when movement is above the dead zone)
-    if ((abs _playerInputX > _deadZone) or (abs _playerInputY > _deadZone)) then {
+    /*if ((abs _playerInputX > _deadZone) or (abs _playerInputY > _deadZone)) then {
         diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
-    };
+    };*/
 
     // Calculate the offset based on input:
     // Convention: forward/back modifies the Y axis; left/right modifies the X axis.
