@@ -48,17 +48,19 @@ while {_cameraAlive} do {
 
     // Apply dead zone using if/then:
     private _xAxisMovement = 0;
-    if (abs _playerInputX > .5 ) or (abs _playerInputX < .5) then {
+    if ((abs _playerInputX > .5 ) or (abs _playerInputX < .5)) then {
         _xAxisMovement = _playerInputX;
         diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
-        hint "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
+        hintSilent "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
+        hintSilent "";
     };
 
     private _yAxisMovement = 0;
-    if (abs _playerInputY > .5) or (abs _playerInputY < .5) then {
+    if ((abs _playerInputY > .5) or (abs _playerInputY < .5)) then {
         _yAxisMovement = _playerInputY;
         diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
-        hint "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
+        hintSilent "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
+        hintSilent "";
     };
 
     // Debug logging: Print input values (only when movement is above the dead zone)
