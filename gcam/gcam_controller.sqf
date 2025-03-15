@@ -53,17 +53,16 @@ while {_cameraAlive} do {
     if ((abs _playerInputX > .5 ) or (abs _playerInputX < .5)) then {
         _xAxisMovement = _playerInputX;
         diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
-        hintSilent "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
-        hintSilent "";
     };
 
 
     if ((abs _playerInputY > .5) or (abs _playerInputY < .5)) then {
         _yAxisMovement = _playerInputY;
         diag_log format ["[GCam Debug] xAxisMovement: %1, yAxisMovement: %2", _xAxisMovement, _yAxisMovement];
-        hintSilent "xAxisMovement: %1; yAxisMovement: %2", _xAxisMovement, _yAxisMovement;
-        hintSilent "";
     };
+
+    _cameraObj cameraEffect ["Internal", "Back"];
+    _cameraObj setPosASL [_playerInputX+_xAxisMovement, _playerInputY + _yAxisMovement , 0.0]
 
     // Debug logging: Print input values (only when movement is above the dead zone)
     /*if ((abs _playerInputX > _deadZone) or (abs _playerInputY > _deadZone)) then {
