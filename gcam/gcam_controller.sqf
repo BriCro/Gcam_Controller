@@ -72,7 +72,8 @@ while {_cameraAlive} do {
     // Calculate the offset based on input:
     // Convention: forward/back modifies the Y axis; left/right modifies the X axis.
     // (Adjust if your coordinate system differs.)
-    private _cameraOffset = [ _moveSpeed * _yAxisMovement, _moveSpeed * _xAxisMovement, 0 ];
+    //DEBUG
+    //private _cameraOffset = [ _moveSpeed * _yAxisMovement, _moveSpeed * _xAxisMovement, 0 ];
 
     // Use the camera's current position as the base:
     private _currentPos = getPosASL _cameraObj;
